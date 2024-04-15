@@ -351,11 +351,120 @@ def post_detail(request, pk):
 {% endblock %}
 ```
 
+- create forms.py
+```python
+from django import forms
 
+from .models import Post
 
+class PostForm(forms.ModelForm):
 
+    class Meta:
+        model = Post
+        fields = ('title', 'text',)
+```
 
+- add the svg to the base.html header div
+```html
+<a href="{% url 'post_new' %}" class="top-menu">
+    {% include './icons/file-earmark-plus.svg' %}
+</a>
+```
 
+- blog/urls.py
+```python
+path('post/new/', views.post_new, name='post_new'),
+```
 
+- add to views.py
+```python
+from .forms import PostForm
+
+...
+
+def post_new(request):
+    form = PostForm()
+    return render(request, 'blog/post_edit.html', {'form': form})
+
+```
+
+- create post_edit.html template
+```html
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h2>New post</h2>
+    <form method="POST" class="post-form">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-secondary">Save</button>
+    </form>
+{% endblock %}
+```
+
+- views.py
+```python
+def post_new(request):
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = PostForm()
+    return render(request, 'blog/post_edit.html', {'form': form})
+```
+
+- edit post_detail.html (inside articel)
+```html
+<aside class="actions">
+    <a class="btn btn-secondary" href="{% url 'post_edit' pk=post.pk %}">
+      {% include './icons/pencil-fill.svg' %}
+    </a>
+</aside>
+```
+
+-add to urls.py
+```python
+    path('post/<int:pk>/edit/', views.post_edit, name='post_edit'),
+
+```
+
+-add post_edit to views.py
+```python
+def post_edit(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = PostForm(instance=post)
+    return render(request, 'blog/post_edit.html', {'form': form})
+```
+
+- in base.htmml
+```html
+{% if user.is_authenticated %}
+    <a href="{% url 'post_new' %}" class="top-menu">
+        {% include './icons/file-earmark-plus.svg' %}
+    </a>
+{% endif %}
+```
+
+- in post detail html
+```html
+{% if user.is_authenticated %}
+    <a href="{% url 'post_new' %}" class="top-menu">
+        {% include './icons/file-earmark-plus.svg' %}
+    </a>
+{% endif %}
+```
 
 
