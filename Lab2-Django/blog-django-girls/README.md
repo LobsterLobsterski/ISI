@@ -79,6 +79,15 @@ admin.site.register(Post)
 
 - log in at  http://127.0.0.1:8000/admin/
 
-- 
+- log into PythonAnywhere, make an account and make API token
+
+- create a bash console and ```run pip3.8 install --user pythonanywhere```
+
+- pa_autoconfigure_django.py --python=3.8 https://github.com/LobsterLobsterski/ISI.git (a log in may be necessary)
+
+- wait until it does everything
+
+- something broke, i imagine its the fact that ISI repo is not just Lab2. Can be bothered to fix it, i can't be bothered creating a repo for every lab for this subject -> no deployment
+
 
 
