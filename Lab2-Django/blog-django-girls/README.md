@@ -323,6 +323,33 @@ h4 {
 {% endblock %}
 ```
 
+- add {% url 'post_detail' pk=post.pk %} as the href of your posts in the template
+
+- add path('post/<int:pk>/', views.post_detail, name='post_detail'), to urls.py
+
+- add post_detail method to views.py
+```python
+def post_detail(request, pk):
+    posts = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/post_list.html', {'posts': posts})
+```
+
+- create templates/blog/post_detail.html
+```html
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <article class="post">
+        {% if post.published_date %}
+            <time class="date">
+                {{ post.published_date }}
+            </time>
+        {% endif %}
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </article>
+{% endblock %}
+```
 
 
 
