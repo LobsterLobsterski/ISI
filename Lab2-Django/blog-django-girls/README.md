@@ -148,7 +148,32 @@ def post_list(request):
 
 - if deployment works, git commit, git push and then git pull on the server console
 
-- 
+- blog/views.py
+```python
+from django.shortcuts import render
+from django.utils import timezone
+from .models import Post
+
+
+# Create your views here.
+def post_list(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'blog/post_list.html', {'posts': posts})
+```
+
+- replace <article>s with in the template
+```html
+{% for post in posts %}
+    <article>
+        <time>published: {{ post.published_date }}</time>
+        <h2><a href="">{{ post.title }}</a></h2>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </article>
+{% endfor %}
+```
+
+
+
 
 
 
