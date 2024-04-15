@@ -172,6 +172,109 @@ def post_list(request):
 {% endfor %}
 ```
 
+- create /blog/static/css/blog.css
+
+- add{% load static %} at the beggining of template
+
+- add <link rel="stylesheet" href="{% static 'css/blog.css' %}"> to the template
+
+- add page-header class to the header and container class to its div
+
+- add post class to articles
+
+- blog.css
+```css
+.page-header {
+    background-color: #C25100;
+    margin-top: 0;
+    margin-bottom: 40px;
+    padding: 20px 20px 20px 40px;
+}
+
+.page-header h1,
+.page-header h1 a,
+.page-header h1 a:visited,
+.page-header h1 a:active {
+    color: #ffffff;
+    font-size: 36pt;
+    text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Lobster', cursive;
+}
+
+.date {
+    color: #828282;
+}
+
+.save {
+    float: right;
+}
+
+.post-form textarea,
+.post-form input {
+    width: 100%;
+}
+
+.top-menu,
+.top-menu:hover,
+.top-menu:visited {
+    color: #ffffff;
+    float: right;
+    font-size: 26pt;
+    margin-right: 20px;
+}
+
+.post {
+    margin-bottom: 70px;
+}
+
+.post h2 a,
+.post h2 a:visited {
+    color: #000000;
+}
+
+.post > .date,
+.post > .actions {
+    float: right;
+}
+
+.btn-secondary,
+.btn-secondary:visited {
+    color: #C25100;
+    background: none;
+    border-color: #C25100;
+}
+
+.btn-secondary:hover {
+    color: #FFFFFF;
+    background-color: #C25100;
+}
+```
+
+- replace old post loop within template with
+```html
+<main class="container">
+    <div class="row">
+        <div class="col">
+            {% for post in posts %}
+                <article class="post">
+                    <time class="date">
+                        {{ post.published_date }}
+                    </time>
+                    <h2><a href="">{{ post.title }}</a></h2>
+                    <p>{{ post.text|linebreaksbr }}</p>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+```
+
 
 
 
