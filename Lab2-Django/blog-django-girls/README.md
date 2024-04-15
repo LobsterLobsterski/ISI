@@ -62,3 +62,23 @@ class Post(models.Model):
 - python manage.py makemigrations blog
 
 - python manage.py migrate blog
+
+- edit blog/admin.py
+
+```python
+from django.contrib import admin
+from .models import Post
+
+admin.site.register(Post)
+```
+- python manage.py runserver
+
+- python manage.py createsuperuser
+
+- python manage.py migrate
+
+- log in at  http://127.0.0.1:8000/admin/
+
+- 
+
+
