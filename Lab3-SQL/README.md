@@ -990,7 +990,22 @@ order by year, month;
 
 ### 4.1. Blobs
 ``` sql
-sqllllll
+create table images (
+    name text not null,
+    content blob
+);
+
+insert into images (name, content) values
+('biohazard', readfile('img/biohazard.png')),
+('crush', readfile('img/crush.png')),
+('fire', readfile('img/fire.png')),
+('radioactive', readfile('img/radioactive.png')),
+('tripping', readfile('img/tripping.png'));
+
+select
+    name,
+    length(content)
+from images;
 ```
 ![pic](images\4_1.png)
 
@@ -998,7 +1013,7 @@ sqllllll
 ### 4.2. Yet Another Database
 
 ``` sql
-sqllllll
+.schema
 ```
 ![pic](images\4_2.png)
 
@@ -1006,7 +1021,8 @@ sqllllll
 ### 4.3. Storing JSON
 
 ``` sql
-sqllllll
+select * from machine;
+
 ```
 ![pic](images\4_3.png)
 
@@ -1014,7 +1030,10 @@ sqllllll
 ### 4.4. Select Fields from JSON
 
 ``` sql
-sqllllll
+select
+    details->'$.acquired' as single_arrow,
+    details->>'$.acquired' as double_arrow
+from machine;
 ```
 ![pic](images\4_4.png)
 
@@ -1022,7 +1041,11 @@ sqllllll
 ### 4.5. JSON Array Access
 
 ``` sql
-sqllllll
+select
+    ident,
+    json_array_length(log->'$') as length,
+    log->'$[0]' as first
+from usage;
 ```
 ![pic](images\4_5.png)
 
@@ -1030,7 +1053,12 @@ sqllllll
 ### 4.6. Unpacking JSON Arrays
 
 ``` sql
-sqllllll
+select
+    ident,
+    json_each.key as key,
+    json_each.value as value
+from usage, json_each(usage.log)
+limit 10;
 ```
 ![pic](images\4_6.png)
 
@@ -1038,7 +1066,11 @@ sqllllll
 ### 4.7. Selecting the Last Element of an Array
 
 ``` sql
-sqllllll
+select
+    ident,
+    log->'$[#-1].machine' as final
+from usage
+limit 5;
 ```
 ![pic](images\4_7.png)
 
@@ -1046,7 +1078,11 @@ sqllllll
 ### 4.8. Modifying JSON
 
 ``` sql
-sqllllll
+select
+    ident,
+    name,
+    json_set(details, '$.sold', json_quote('2024-01-25')) as updated
+from machine;
 ```
 ![pic](images\4_8.png)
 
@@ -1054,7 +1090,11 @@ sqllllll
 ### 4.9. Refreshing the Penguins Database
 
 ``` sql
-sqllllll
+select
+    species,
+    count(*) as num
+from penguins
+group by species;
 ```
 ![pic](images\4_9.png)
 
@@ -1062,15 +1102,35 @@ sqllllll
 ### 4.10. Tombstones
 
 ``` sql
-sqllllll
+alter table penguins
+add active integer not null default 1;
+
+update penguins
+set active = iif(species = 'Adelie', 0, 1);
+```
+``` sql
+select
+    species,
+    count(*) as num
+from penguins
+where active
+group by species;
 ```
 ![pic](images\4_10.png)
-
 
 ### 4.11. Importing CSV Data
 
 ``` sql
-sqllllll
+drop table if exists penguins;
+.mode csv penguins
+.import misc/penguins.csv penguins
+update penguins set species = null where species = '';
+update penguins set island = null where island = '';
+update penguins set bill_length_mm = null where bill_length_mm = '';
+update penguins set bill_depth_mm = null where bill_depth_mm = '';
+update penguins set flipper_length_mm = null where flipper_length_mm = '';
+update penguins set body_mass_g = null where body_mass_g = '';
+update penguins set sex = null where sex = '';
 ```
 ![pic](images\4_11.png)
 
@@ -1078,7 +1138,32 @@ sqllllll
 ### 4.12. Views
 
 ``` sql
-sqllllll
+create view if not exists
+active_penguins (
+    species,
+    island,
+    bill_length_mm,
+    bill_depth_mm,
+    flipper_length_mm,
+    body_mass_g,
+    sex
+) as
+select
+    species,
+    island,
+    bill_length_mm,
+    bill_depth_mm,
+    flipper_length_mm,
+    body_mass_g,
+    sex
+from penguins
+where active;
+
+select
+    species,
+    count(*) as num
+from active_penguins
+group by species;
 ```
 ![pic](images\4_12.png)
 
@@ -1086,7 +1171,14 @@ sqllllll
 ### 4.13. Hours Reminder
 
 ``` sql
-sqllllll
+create table job (
+    name text not null,
+    billable real not null
+);
+insert into job values
+('calibrate', 1.5),
+('clean', 0.5);
+select * from job;
 ```
 ![pic](images\4_13.png)
 
@@ -1094,7 +1186,15 @@ sqllllll
 ### 4.14. Adding Checks
 
 ``` sql
-sqllllll
+drop table job;
+create table job (
+    name text not null,
+    billable real not null,
+    check (billable > 0.0)
+);
+insert into job values ('calibrate', 1.5);
+insert into job values ('reset', -0.5);
+select * from job;
 ```
 ![pic](images\4_14.png)
 
@@ -1102,7 +1202,20 @@ sqllllll
 ### 4.15. Transactions
 
 ``` sql
-sqllllll
+drop table job;
+create table job (
+    name text not null,
+    billable real not null,
+    check (billable > 0.0)
+);
+
+insert into job values ('calibrate', 1.5);
+
+begin transaction;
+insert into job values ('clean', 0.5);
+rollback;
+
+select * from job;
 ```
 ![pic](images\4_15.png)
 
@@ -1110,7 +1223,20 @@ sqllllll
 ### 4.16. Rollback in Constraints
 
 ``` sql
-sqllllll
+drop table job;
+create table job (
+    name text not null,
+    billable real not null,
+    check (billable > 0.0) on conflict rollback
+);
+
+insert into job values
+    ('calibrate', 1.5);
+insert into job values
+    ('clean', 0.5),
+    ('reset', -0.5);
+
+select * from job;
 ```
 ![pic](images\4_16.png)
 
@@ -1118,14 +1244,48 @@ sqllllll
 ### 4.17. Rollback in Statements
 
 ``` sql
-sqllllll
+drop table job;
+create table job (
+    name text not null,
+    billable real not null,
+    check (billable > 0.0)
+);
+
+insert or rollback into job values
+('calibrate', 1.5);
+insert or rollback into job values
+('clean', 0.5),
+('reset', -0.5);
+
+select * from job;
 ```
 ![pic](images\4_17.png)
 
 
 ### 4.18. Upsert
 ``` sql
-sqllllll
+create table jobs_done (
+    person text unique,
+    num integer default 0
+);
+
+insert into jobs_done values
+('zia', 1);
+.print 'after first'
+select * from jobs_done;
+.print
+
+
+insert into jobs_done values
+('zia', 1);
+.print 'after failed'
+select * from jobs_done;
+
+insert into jobs_done values
+('zia', 1)
+on conflict(person) do update set num = num + 1;
+.print '\nafter upsert'
+select * from jobs_done;
 ```
 ![pic](images\4_18.png)
 
@@ -1133,7 +1293,37 @@ sqllllll
 ### 4.19. Creating Triggers
 
 ``` sql
-sqllllll
+-- Track hours of lab work.
+create table job (
+    person text not null,
+    reported real not null check (reported >= 0.0)
+);
+
+-- Explicitly store per-person total rather than using sum().
+create table total (
+    person text unique not null,
+    hours real
+);
+
+-- Initialize totals.
+insert into total values
+('gene', 0.0),
+('august', 0.0);
+
+-- Define a trigger.
+create trigger total_trigger
+before insert on job
+begin
+    -- Check that the person exists.
+    select case
+        when not exists (select 1 from total where person = new.person)
+        then raise(rollback, 'Unknown person ')
+    end;
+    -- Update their total hours (or fail if non-negative constraint violated).
+    update total
+    set hours = hours + new.reported
+    where total.person = new.person;
+end;
 ```
 ![pic](images\4_19.png)
 
@@ -1141,7 +1331,10 @@ sqllllll
 ### 4.20. Trigger Not Firing
 
 ``` sql
-sqllllll
+insert into job values
+('gene', 1.5),
+('august', 0.5),
+('gene', 1.0);
 ```
 ![pic](images\4_20.png)
 
@@ -1149,7 +1342,9 @@ sqllllll
 ### 4.21. Trigger Firing
 
 ``` sql
-sqllllll
+insert into job values
+('gene', 1.0),
+('august', -1.0);
 ```
 ![pic](images\4_21.png)
 
@@ -1157,7 +1352,21 @@ sqllllll
 ### 4.22. Representing Graphs
 
 ``` sql
-sqllllll
+create table lineage (
+    parent text not null,
+    child text not null
+);
+insert into lineage values
+('Arturo', 'Clemente'),
+('Darío', 'Clemente'),
+('Clemente', 'Homero'),
+('Clemente', 'Ivonne'),
+('Ivonne', 'Lourdes'),
+('Soledad', 'Lourdes'),
+('Lourdes', 'Santiago');
+```
+```sql
+select * from lineage;
 ```
 ![pic](images\4_22.png)
 
@@ -1165,7 +1374,22 @@ sqllllll
 ### 4.23. Recursive Queries
 
 ``` sql
-sqllllll
+with recursive descendent as (
+    select
+        'Clemente' as person,
+        0 as generations
+    union all
+    select
+        lineage.child as person,
+        descendent.generations + 1 as generations
+    from descendent inner join lineage
+        on descendent.person = lineage.parent
+)
+
+select
+    person,
+    generations
+from descendent;
 ```
 ![pic](images\4_23.png)
 
@@ -1173,7 +1397,17 @@ sqllllll
 ### 4.24. Bidirectional Contacts
 
 ``` sql
-sqllllll
+create temporary table bi_contact (
+    left text,
+    right text
+);
+
+insert into bi_contact
+select
+    left, right from contact
+    union all
+    select right, left from contact
+;
 ```
 ![pic](images\4_24.png)
 
@@ -1181,7 +1415,15 @@ sqllllll
 ### 4.25. Updating Group Identifiers
 
 ``` sql
-sqllllll
+select
+    left.name as left_name,
+    left.ident as left_ident,
+    right.name as right_name,
+    right.ident as right_ident,
+    min(left.ident, right.ident) as new_ident
+from
+    (person as left join bi_contact on left.name = bi_contact.left)
+    join person as right on bi_contact.right = right.name;
 ```
 ![pic](images\4_25.png)
 
@@ -1189,7 +1431,25 @@ sqllllll
 ### 4.26. Recursive Labeling
 
 ``` sql
-sqllllll
+with recursive labeled as (
+    select
+        person.name as name,
+        person.ident as label
+    from
+        person
+    union -- not 'union all'
+    select
+        person.name as name,
+        labeled.label as label
+    from
+        (person join bi_contact on person.name = bi_contact.left)
+        join labeled on bi_contact.right = labeled.name
+    where labeled.label < person.ident
+)
+select name, min(label) as group_id
+from labeled
+group by name
+order by label, name;
 ```
 ![pic](images\4_26.png)
 
