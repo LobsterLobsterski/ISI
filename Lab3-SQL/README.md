@@ -4,7 +4,7 @@
 ``` sql
 select * from penguins
 ```
-![pic]([images/2_1.png](https://github.com/LobsterLobsterski/ISI/blob/main/Lab3-SQL/images/2_1.png))
+![pic](images/2_1.png)
 
 ### 2.2. Select columns
 ``` sql
