@@ -8,55 +8,99 @@ select * from penguins
 
 ### 2.2. Select columns
 ``` sql
-sqllllll
+select
+    species,
+    island,
+    sex
+from little_penguins;
 ```
 ![pic](images\2_2.png)
 
 ### 2.3. sorting
 ``` sql
-sqllllll
+select
+    species,
+    sex,
+    island
+from little_penguins
+order by island asc, sex desc;
 ```
 ![pic](images\2_3.png)
 
 ### 2.4. Limiting Output
 ``` sql
-sqllllll
+select
+    species,
+    sex,
+    island
+from penguins
+order by species, sex, island
+limit 10;
 ```
 ![pic](images\2_4.png)
 
 ### 2.5. Paging Output
 ``` sql
-sqllllll
+select
+    species,
+    sex,
+    island
+from penguins
+order by species, sex, island
+limit 10 offset 3;
 ```
 ![pic](images\2_5.png)
 
 ### 2.6. Removing Duplicates
 ``` sql
-sqllllll
+select distinct
+    species,
+    sex,
+    island
+from penguins;
 ```
 ![pic](images\2_6.png)
 
 ### 2.7. Filtering Results
 ``` sql
-sqllllll
+select distinct
+    species,
+    sex,
+    island
+from penguins
+where island = 'Biscoe';
 ```
 ![pic](images\2_7.png)
 
 ### 2.8. Doing Calculations
 ``` sql
-sqllllll
+select
+    flipper_length_mm / 10.0,
+    body_mass_g / 1000.0
+from penguins
+limit 3;
 ```
 ![pic](images\2_8.png)
 
 ### 2.9. Renaming Columns
 ``` sql
-sqllllll
+select
+    flipper_length_mm / 10.0 as flipper_cm,
+    body_mass_g / 1000.0 as weight_kg,
+    island as where_found
+from penguins
+limit 3;
 ```
 ![pic](images\2_9.png)
 
 ### 2.10. Calculating with Missing Values
 ``` sql
-sqllllll
+select
+    flipper_length_mm / 10.0 as flipper_cm,
+    body_mass_g / 1000.0 as weight_kg,
+    island as where_found
+from penguins
+limit 5;
 ```
 ![pic](images\2_10.png)
 
