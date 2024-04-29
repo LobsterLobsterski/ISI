@@ -4,100 +4,100 @@
 ``` sql
 select * from penguins
 ```
-![pic](images\2_1.png)
+![pic](images\2_0.png)
 
 ### 2.2. Select columns
 ``` sql
 sqllllll
 ```
-![pic](images\2_2.png)
+![pic](images\2_0.png)
 
 ### 2.3. sorting
 ``` sql
 sqllllll
 ```
-![pic](images\2_3.png)
+![pic](images\2_0.png)
 
 ### 2.4. Limiting Output
 ``` sql
 sqllllll
 ```
-![pic](images\2_4.png)
+![pic](images\2_0.png)
 
 ### 2.5. Paging Output
 ``` sql
 sqllllll
 ```
-![pic](images\2_5.png)
+![pic](images\2_0.png)
 
 ### 2.6. Removing Duplicates
 ``` sql
 sqllllll
 ```
-![pic](images\2_6.png)
+![pic](images\2_0.png)
 
 ### 2.7. Filtering Results
 ``` sql
 sqllllll
 ```
-![pic](images\2_7.png)
+![pic](images\2_0.png)
 
 ### 2.8. Doing Calculations
 ``` sql
 sqllllll
 ```
-![pic](images\2_8.png)
+![pic](images\2_0.png)
 
 ### 2.9. Renaming Columns
 ``` sql
 sqllllll
 ```
-![pic](images\2_9.png)
+![pic](images\2_0.png)
 
 ### 2.10. Calculating with Missing Values
 ``` sql
 sqllllll
 ```
-![pic](images\2_10.png)
+![pic](images\2_0.png)
 
 ### 2.11. Null Equality
 ``` sql
 sqllllll
 ```
-![pic](images\2_11.png)
+![pic](images\2_0.png)
 
 ### 2.12. Null Inequality
 ``` sql
 sqllllll
 ```
-![pic](images\2_12.png)
+![pic](images\2_0.png)
 
 ### 2.12. Ternary Logic
 ``` sql
 sqllllll
 ```
-![pic](images\2_13.png)
+![pic](images\2_0.png)
 
 
 ### 2.13. Handling Null Safely
 ``` sql
 sqllllll
 ```
-![pic](images\2_14.png)
+![pic](images\2_0.png)
 
 
 ### 2.14. Check Understanding
 ``` sql
 sqllllll
 ```
-![pic](images\2_15.png)
+![pic](images\2_0.png)
 
 
 ### 2.15. Aggregating
 ``` sql
 sqllllll
 ```
-![pic](images\2_16.png)
+![pic](images\2_0.png)
 
 
 ### 2.16. Common Aggregation Functions
@@ -105,14 +105,14 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\2_17.png)
+![pic](images\2_0.png)
 
 
 ### 2.17. Counting
 ``` sql
 sqllllll
 ```
-![pic](images\2_18.png)
+![pic](images\2_0.png)
 
 
 ### 2.18. Grouping
@@ -120,7 +120,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\2_19.png)
+![pic](images\2_0.png)
 
 
 ### 2.19. Behavior of Unaggregated Columns
@@ -128,7 +128,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\2_20.png)
+![pic](images\2_0.png)
 
 
 ### 2.20. Arbitrary Choice in Aggregation
@@ -136,62 +136,62 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\2_21.png)
+![pic](images\2_0.png)
 
 ### 2.21. Filtering Aggregated Values
 
 ``` sql
 sqllllll
 ```
-![pic](images\2_22.png)
+![pic](images\2_0.png)
 ### 2.22. Readable Output
 
 ``` sql
 sqllllll
 ```
-![pic](images\2_23.png)
+![pic](images\2_0.png)
 ### 2.23. Filtering Aggregate Inputs
 
 ``` sql
 sqllllll
 ```
-![pic](images\2_24.png)
+![pic](images\2_0.png)
 ### 2.24. Creating In-memory Database, Python scripts
 
 ``` sql
 sqllllll
 ```
-![pic](images\2_25.png)
+![pic](images\2_0.png)
 ### 2.25. Combining Information
 
 ``` sql
 sqllllll
 ```
-![pic](images\2_26.png)
+![pic](images\2_0.png)
 ### 2.26. Inner Join
 
 ``` sql
 sqllllll
 ```
-![pic](images\2_27.png)
+![pic](images\2_0.png)
 ### 2.27. Aggregating Joined Data
 
 ``` sql
 sqllllll
 ```
-![pic](images\2_28.png)
+![pic](images\2_0.png)
 ### 2.28. Left Join
 
 ``` sql
 sqllllll
 ```
-![pic](images\2_29.png)
+![pic](images\2_0.png)
 ### 2.29. Coalescing Values
 
 ``` sql
 sqllllll
 ```
-![pic](images\2_30.png)
+![pic](images\2_0.png)
 ### 2.30. Full Outer Join
 
 ``` sql
@@ -205,7 +205,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_1.png)
+![pic](images\3_0.png)
 
 
 ### 3.2. Set Membership
@@ -213,14 +213,14 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_2.png)
+![pic](images\3_0.png)
 
 
 ### 3.3. Subqueries
 ``` sql
 sqllllll
 ```
-![pic](images\3_3.png)
+![pic](images\3_0.png)
 
 
 ### 3.4. Defining a Primary Key
@@ -228,7 +228,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_4.png)
+![pic](images\3_0.png)
 
 
 ### 3.5. Autoincrementing and Primary Keys
@@ -236,7 +236,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_5.png)
+![pic](images\3_0.png)
 
 
 ### 3.6. Internal Tables
@@ -244,7 +244,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_6.png)
+![pic](images\3_0.png)
 
 
 ### 3.7. Altering Tables
@@ -252,7 +252,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_7.png)
+![pic](images\3_0.png)
 
 
 ### 3.8. Creating New Tables from Old
@@ -260,7 +260,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_8.png)
+![pic](images\3_0.png)
 
 
 ### 3.9. Removing Tables
@@ -268,7 +268,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_9.png)
+![pic](images\3_0.png)
 
 
 ### 3.10. Comparing Individual Values to Aggregates
@@ -276,7 +276,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_10.png)
+![pic](images\3_0.png)
 
 
 ### 3.11. Comparing Individual Values to Aggregates Within Groups
@@ -284,7 +284,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_11.png)
+![pic](images\3_0.png)
 
 
 ### 3.12. Common Table Expressions
@@ -292,7 +292,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_12.png)
+![pic](images\3_0.png)
 
 
 ### 3.13. Explaining Query Plans
@@ -300,7 +300,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_13.png)
+![pic](images\3_0.png)
 
 
 ### 3.14. Enumerating Rows
@@ -308,7 +308,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_14.png)
+![pic](images\3_0.png)
 
 
 ### 3.15. Conditionals
@@ -316,7 +316,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_15.png)
+![pic](images\3_0.png)
 
 
 ### 3.16. Selecting a Case
@@ -324,7 +324,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_16.png)
+![pic](images\3_0.png)
 
 
 ### 3.17. Checking a Range
@@ -332,7 +332,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_17.png)
+![pic](images\3_0.png)
 
 
 ### 3.18. Pattern Matching
@@ -340,7 +340,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_18.png)
+![pic](images\3_0.png)
 
 
 ### 3.19. Selecting First and Last Rows
@@ -348,21 +348,21 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_19.png)
+![pic](images\3_0.png)
 
 
 ### 3.20. Intersection
 ``` sql
 sqllllll
 ```
-![pic](images\3_20.png)
+![pic](images\3_0.png)
 
 
 ### 3.21. Exclusion
 ``` sql
 sqllllll
 ```
-![pic](images\3_21.png)
+![pic](images\3_0.png)
 
 
 ### 3.22. Random Numbers and Why Not
@@ -370,7 +370,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_22.png)
+![pic](images\3_0.png)
 
 
 ### 3.23. Creating an Index
@@ -378,7 +378,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_23.png)
+![pic](images\3_0.png)
 
 
 ### 3.24. Generating Sequences
@@ -386,7 +386,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_24.png)
+![pic](images\3_0.png)
 
 
 ### 3.25. Generating Sequences of Dates
@@ -394,7 +394,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_25.png)
+![pic](images\3_0.png)
 
 
 ### 3.26. Counting Experiments Started per Day Without Gaps
@@ -402,7 +402,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_26.png)
+![pic](images\3_0.png)
 
 
 ### 3.27. Self Join
@@ -410,7 +410,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_27.png)
+![pic](images\3_0.png)
 
 
 ### 3.28. Generating Unique Pairs
@@ -418,7 +418,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_28.png)
+![pic](images\3_0.png)
 
 
 ### 3.29. Filtering Pairs
@@ -426,7 +426,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_29.png)
+![pic](images\3_0.png)
 
 
 ### 3.30. Existence and Correlated Subqueries
@@ -434,7 +434,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_30.png)
+![pic](images\3_0.png)
 
 
 ### 3.31. Nonexistence
@@ -442,7 +442,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_31.png)
+![pic](images\3_0.png)
 
 
 ### 3.32. Avoiding Correlated Subqueries
@@ -450,7 +450,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_32.png)
+![pic](images\3_0.png)
 
 
 ### 3.33. Lead and Lag
@@ -458,7 +458,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_33.png)
+![pic](images\3_0.png)
 
 
 ### 3.34. Windowing Functions
@@ -466,7 +466,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_34.png)
+![pic](images\3_0.png)
 
 
 ### 3.35. Explaining Another Query Plan
@@ -474,7 +474,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_35.png)
+![pic](images\3_0.png)
 
 
 ### 3.36. Partitioned Windows
@@ -482,14 +482,14 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\3_36.png)
+![pic](images\3_0.png)
 
 
 ### 4.1. Blobs
 ``` sql
 sqllllll
 ```
-![pic](images\4_1.png)
+![pic](images\4_0.png)
 
 
 ### 4.2. Yet Another Database
@@ -497,7 +497,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_2.png)
+![pic](images\4_0.png)
 
 
 ### 4.3. Storing JSON
@@ -505,7 +505,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_3.png)
+![pic](images\4_0.png)
 
 
 ### 4.4. Select Fields from JSON
@@ -513,7 +513,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_4.png)
+![pic](images\4_0.png)
 
 
 ### 4.5. JSON Array Access
@@ -521,7 +521,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_5.png)
+![pic](images\4_0.png)
 
 
 ### 4.6. Unpacking JSON Arrays
@@ -529,7 +529,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_6.png)
+![pic](images\4_0.png)
 
 
 ### 4.7. Selecting the Last Element of an Array
@@ -537,7 +537,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_7.png)
+![pic](images\4_0.png)
 
 
 ### 4.8. Modifying JSON
@@ -545,7 +545,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_8.png)
+![pic](images\4_0.png)
 
 
 ### 4.9. Refreshing the Penguins Database
@@ -553,7 +553,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_9.png)
+![pic](images\4_0.png)
 
 
 ### 4.10. Tombstones
@@ -561,7 +561,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_10.png)
+![pic](images\4_0.png)
 
 
 ### 4.11. Importing CSV Data
@@ -569,7 +569,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_11.png)
+![pic](images\4_0.png)
 
 
 ### 4.12. Views
@@ -577,7 +577,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_12.png)
+![pic](images\4_0.png)
 
 
 ### 4.13. Hours Reminder
@@ -585,7 +585,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_13.png)
+![pic](images\4_0.png)
 
 
 ### 4.14. Adding Checks
@@ -593,7 +593,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_14.png)
+![pic](images\4_0.png)
 
 
 ### 4.15. Transactions
@@ -601,7 +601,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_15.png)
+![pic](images\4_0.png)
 
 
 ### 4.16. Rollback in Constraints
@@ -609,7 +609,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_16.png)
+![pic](images\4_0.png)
 
 
 ### 4.17. Rollback in Statements
@@ -617,14 +617,14 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_17.png)
+![pic](images\4_0.png)
 
 
 ### 4.18. Upsert
 ``` sql
 sqllllll
 ```
-![pic](images\4_18.png)
+![pic](images\4_0.png)
 
 
 ### 4.19. Creating Triggers
@@ -632,7 +632,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_19.png)
+![pic](images\4_0.png)
 
 
 ### 4.20. Trigger Not Firing
@@ -640,7 +640,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_20.png)
+![pic](images\4_0.png)
 
 
 ### 4.21. Trigger Firing
@@ -648,7 +648,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_21.png)
+![pic](images\4_0.png)
 
 
 ### 4.22. Representing Graphs
@@ -656,7 +656,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_22.png)
+![pic](images\4_0.png)
 
 
 ### 4.23. Recursive Queries
@@ -664,7 +664,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_23.png)
+![pic](images\4_0.png)
 
 
 ### 4.24. Bidirectional Contacts
@@ -672,7 +672,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_24.png)
+![pic](images\4_0.png)
 
 
 ### 4.25. Updating Group Identifiers
@@ -680,7 +680,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_25.png)
+![pic](images\4_0.png)
 
 
 ### 4.26. Recursive Labeling
@@ -688,7 +688,7 @@ sqllllll
 ``` sql
 sqllllll
 ```
-![pic](images\4_26.png)
+![pic](images\4_0.png)
 
 
 ### 5.1. Querying from Python
@@ -696,7 +696,7 @@ sqllllll
 ``` python
 pythonnnn
 ```
-![pic](images\5_1.png)
+![pic](images\5_0.png)
 
 
 ### 5.2. Incremental Fetch
@@ -704,7 +704,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_2.png)
+![pic](images\5_0.png)
 
 
 ### 5.3. Insert, Delete, and All That
@@ -712,7 +712,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_3.png)
+![pic](images\5_0.png)
 
 
 ### 5.4. Interpolating Values
@@ -720,7 +720,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_4.png)
+![pic](images\5_0.png)
 
 
 ### 5.5. Script Execution
@@ -728,7 +728,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_5.png)
+![pic](images\5_0.png)
 
 
 ### 5.6. SQLite Exceptions in Python
@@ -736,7 +736,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_6.png)
+![pic](images\5_0.png)
 
 
 ### 5.7. Python in SQLite
@@ -744,7 +744,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_7.png)
+![pic](images\5_0.png)
 
 
 ### 5.8. Handling Dates and Times
@@ -752,7 +752,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_8.png)
+![pic](images\5_0.png)
 
 
 ### 5.9. Pandas and SQL
@@ -760,7 +760,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_9.png)
+![pic](images\5_0.png)
 
 
 ### 5.10. Polars and SQL
@@ -768,7 +768,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_10.png)
+![pic](images\5_0.png)
 
 
 ### 5.11. Object-Relational Mappers
@@ -776,7 +776,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_11.png)
+![pic](images\5_0.png)
 
 
 ### 5.12. Relations with ORMs
@@ -784,6 +784,6 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_12.png)
+![pic](images\5_0.png)
 
 ### THATS ALL FOLKS
