@@ -1,3 +1,4 @@
+#takes base template and creates a readme.md file
 def generate_readme_from_template():
     with open("template.txt") as f:
         data = f.read()
@@ -15,6 +16,7 @@ def generate_readme_from_template():
     with open("README.md", 'w') as f:
         f.write(data)
 
+#renames names of images to 2_1, 2_2, ..., 5_12 based on Date modified
 def rename_images():
     import glob
     import os
@@ -23,12 +25,8 @@ def rename_images():
   
     files = list(filter(os.path.isfile, glob.glob(search_dir + "*")))
     files.sort(key=lambda x: os.path.getmtime(x))
-
-    #print(files)
     
     tasks = [30, 36, 26, 12]
-    
-    #tasks= [10]
 
     section=2
     file_idx = 0
@@ -41,3 +39,4 @@ def rename_images():
 
 if __name__ == '__main__':
     rename_images()
+    print('finished')
