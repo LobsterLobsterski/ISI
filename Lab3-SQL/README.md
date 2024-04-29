@@ -106,40 +106,50 @@ limit 5;
 
 ### 2.11. Null Equality
 ``` sql
-sqllllll
+select distinct
+    species,
+    sex,
+    island
+from penguins
+where island = 'Biscoe';
 ```
 ![pic](images\2_11.png)
 
 ### 2.12. Null Inequality
 ``` sql
-sqllllll
+select distinct
+    species,
+    sex,
+    island
+from penguins
+where island = 'Biscoe' and sex != 'FEMALE';
 ```
 ![pic](images\2_12.png)
 
-### 2.12. Ternary Logic
+### 2.13. Ternary Logic
 ``` sql
-sqllllll
+select null = null;
+
 ```
 ![pic](images\2_13.png)
 
 
-### 2.13. Handling Null Safely
+### 2.14. Handling Null Safely
 ``` sql
-sqllllll
+select
+    species,
+    sex,
+    island
+from penguins
+where sex is null;
 ```
 ![pic](images\2_14.png)
 
 
-### 2.14. Check Understanding
-``` sql
-sqllllll
-```
-![pic](images\2_15.png)
-
-
 ### 2.15. Aggregating
 ``` sql
-sqllllll
+select sum(body_mass_g) as total_mass
+from penguins;
 ```
 ![pic](images\2_16.png)
 
@@ -147,14 +157,22 @@ sqllllll
 ### 2.16. Common Aggregation Functions
 
 ``` sql
-sqllllll
+select
+    max(bill_length_mm) as longest_bill,
+    min(flipper_length_mm) as shortest_flipper,
+    avg(bill_length_mm) / avg(bill_depth_mm) as weird_ratio
+from penguins;
 ```
 ![pic](images\2_17.png)
 
 
 ### 2.17. Counting
 ``` sql
-sqllllll
+select
+    count(*) as count_star,
+    count(sex) as count_specific,
+    count(distinct sex) as count_distinct
+from penguins;
 ```
 ![pic](images\2_18.png)
 
@@ -162,7 +180,9 @@ sqllllll
 ### 2.18. Grouping
 
 ``` sql
-sqllllll
+select avg(body_mass_g) as average_mass_g
+from penguins
+group by sex;
 ```
 ![pic](images\2_19.png)
 
@@ -170,7 +190,11 @@ sqllllll
 ### 2.19. Behavior of Unaggregated Columns
 
 ``` sql
-sqllllll
+select
+    sex,
+    avg(body_mass_g) as average_mass_g
+from penguins
+group by sex;
 ```
 ![pic](images\2_20.png)
 
@@ -178,76 +202,123 @@ sqllllll
 ### 2.20. Arbitrary Choice in Aggregation
 
 ``` sql
-sqllllll
+select
+    sex,
+    body_mass_g
+from penguins
+group by sex;
 ```
 ![pic](images\2_21.png)
 
 ### 2.21. Filtering Aggregated Values
 
 ``` sql
-sqllllll
+select
+    sex,
+    avg(body_mass_g) as average_mass_g
+from penguins
+group by sex
+having average_mass_g > 4000.0;
 ```
 ![pic](images\2_22.png)
 ### 2.22. Readable Output
 
 ``` sql
-sqllllll
+select
+    sex,
+    round(avg(body_mass_g), 1) as average_mass_g
+from penguins
+group by sex
+having average_mass_g > 4000.0;
 ```
 ![pic](images\2_23.png)
 ### 2.23. Filtering Aggregate Inputs
 
 ``` sql
-sqllllll
+select
+    sex,
+    round(
+        avg(body_mass_g) filter (where body_mass_g < 4000.0),
+        1
+    ) as average_mass_g
+from penguins
+group by sex;
 ```
 ![pic](images\2_24.png)
 ### 2.24. Creating In-memory Database, Python scripts
 
 ``` sql
-sqllllll
+CHECK THE LAST SECTION FOR PYTHON
 ```
 ![pic](images\2_25.png)
 ### 2.25. Combining Information
 
 ``` sql
-sqllllll
+select *
+from penguins cross join little_penguins;
 ```
 ![pic](images\2_26.png)
 ### 2.26. Inner Join
 
 ``` sql
-sqllllll
+select *
+from penguins inner join little_penguins
+    on penguins.species = little_penguins.species;
 ```
 ![pic](images\2_27.png)
 ### 2.27. Aggregating Joined Data
 
 ``` sql
-sqllllll
+select
+    penguins.island,
+    sum(little_penguins.bill_length_mm) as bill_length
+from penguins inner join little_penguins
+    on penguins.species = little_penguins.species
+group by penguins.species;
 ```
 ![pic](images\2_28.png)
 ### 2.28. Left Join
 
 ``` sql
-sqllllll
+select *
+from penguins left join little_penguins
+    on penguins.species = little_penguins.species;
 ```
 ![pic](images\2_29.png)
 ### 2.29. Coalescing Values
 
 ``` sql
-sqllllll
+select
+    penguins.island,
+    coalesce(sum(little_penguins.bill_length_mm), 0.0) as bill_length
+from penguins left join little_penguins
+    on penguins.species = little_penguins.species
+group by penguins.species;
 ```
-![pic](images\2_30.png)
+![pic](images\2_29.png)
 ### 2.30. Full Outer Join
 
 ``` sql
-sqllllll
+create table size (
+    s text not null
+);
+insert into size values ('light'), ('heavy');
+
+create table weight (
+    w text not null
+);
+
+select * from size outer join weight;
 ```
-![pic](images\2_0.png)
+![pic](images\2_30.png)
 
 
 ### 3.1. Negating Incorrectly
 
 ``` sql
-sqllllll
+select distinct island
+from penguins
+where species != 'Gentoo';
 ```
 ![pic](images\3_1.png)
 
@@ -255,14 +326,22 @@ sqllllll
 ### 3.2. Set Membership
 
 ``` sql
-sqllllll
+select *
+from penguins
+where species not in ('Gentoo', 'Adelie');
 ```
 ![pic](images\3_2.png)
 
 
 ### 3.3. Subqueries
 ``` sql
-sqllllll
+select distinct island
+from penguins
+where island not in (
+    select distinct island
+    from penguins
+    where species = 'Gentoo'
+);
 ```
 ![pic](images\3_3.png)
 
@@ -270,7 +349,22 @@ sqllllll
 ### 3.4. Defining a Primary Key
 
 ``` sql
-sqllllll
+create table lab_equipment (
+    size real not null,
+    color text not null,
+    num integer not null,
+    primary key (size, color)
+);
+
+insert into lab_equipment values
+(1.5, 'blue', 2),
+(1.5, 'green', 1),
+(2.5, 'blue', 1);
+
+select * from lab_equipment;
+
+insert into lab_equipment values
+(1.5, 'green', 2);
 ```
 ![pic](images\3_4.png)
 
@@ -278,7 +372,16 @@ sqllllll
 ### 3.5. Autoincrementing and Primary Keys
 
 ``` sql
-sqllllll
+create table person (
+    ident integer primary key autoincrement,
+    name text not null
+);
+insert into person values
+(null, 'mik'),
+(null, 'po'),
+(null, 'tay');
+select * from person;
+insert into person values (1, 'prevented');
 ```
 ![pic](images\3_5.png)
 
@@ -286,7 +389,8 @@ sqllllll
 ### 3.6. Internal Tables
 
 ``` sql
-sqllllll
+select * from sqlite_sequence;
+
 ```
 ![pic](images\3_6.png)
 
@@ -294,7 +398,18 @@ sqllllll
 ### 3.7. Altering Tables
 
 ``` sql
-sqllllll
+alter table little_penguins
+add ident integer not null default -1;
+
+update little_penguins
+set ident = 1
+where species = 'Gentoo';
+
+update little_penguins
+set ident = 2
+where species = 'Adelie';
+
+select * from little_penguins;
 ```
 ![pic](images\3_7.png)
 
@@ -302,7 +417,21 @@ sqllllll
 ### 3.8. Creating New Tables from Old
 
 ``` sql
-sqllllll
+create table new_work (
+    person_id integer not null,
+    penguin_id integer not null,
+    foreign key (person_id) references person (ident),
+    foreign key (penguin_id) references little_penguins (ident)
+);
+
+insert into new_work
+select
+    person.ident as person_id,
+    little_penguins.ident as penguin_id
+from
+    (person inner join penguins on person.name != penguins.species)
+    inner join little_penguins on little_penguins.species = penguins.species;
+select * from new_work;
 ```
 ![pic](images\3_8.png)
 
@@ -310,7 +439,22 @@ sqllllll
 ### 3.9. Removing Tables
 
 ``` sql
-sqllllll
+CREATE TABLE job (
+    ident integer primary key autoincrement,
+    name text not null,
+    billable real not null
+);
+CREATE TABLE sqlite_sequence(name,seq);
+CREATE TABLE person (
+    ident integer primary key autoincrement,
+    name text not null
+);
+CREATE TABLE IF NOT EXISTS "work" (
+    person_id integer not null,
+    job_id integer not null,
+    foreign key(person_id) references person(ident),
+    foreign key(job_id) references job(ident)
+);
 ```
 ![pic](images\3_9.png)
 
@@ -318,7 +462,14 @@ sqllllll
 ### 3.10. Comparing Individual Values to Aggregates
 
 ``` sql
-sqllllll
+select body_mass_g
+from penguins
+where
+    body_mass_g > (
+        select avg(body_mass_g)
+        from penguins
+    )
+limit 5;
 ```
 ![pic](images\3_10.png)
 
@@ -326,7 +477,20 @@ sqllllll
 ### 3.11. Comparing Individual Values to Aggregates Within Groups
 
 ``` sql
-sqllllll
+select
+    penguins.species,
+    penguins.body_mass_g,
+    round(averaged.avg_mass_g, 1) as avg_mass_g
+from penguins inner join (
+    select
+        species,
+        avg(body_mass_g) as avg_mass_g
+    from penguins
+    group by species
+) as averaged
+    on penguins.species = averaged.species
+where penguins.body_mass_g > averaged.avg_mass_g
+limit 5;
 ```
 ![pic](images\3_11.png)
 
@@ -334,7 +498,21 @@ sqllllll
 ### 3.12. Common Table Expressions
 
 ``` sql
-sqllllll
+with grouped as (
+    select
+        species,
+        avg(body_mass_g) as avg_mass_g
+    from penguins
+    group by species
+)
+
+select
+    penguins.species,
+    penguins.body_mass_g,
+    round(grouped.avg_mass_g, 1) as avg_mass_g
+from penguins inner join grouped
+where penguins.body_mass_g > grouped.avg_mass_g
+limit 5;
 ```
 ![pic](images\3_12.png)
 
@@ -342,7 +520,12 @@ sqllllll
 ### 3.13. Explaining Query Plans
 
 ``` sql
-sqllllll
+explain query plan
+select
+    species,
+    avg(body_mass_g)
+from penguins
+group by species;
 ```
 ![pic](images\3_13.png)
 
@@ -350,7 +533,12 @@ sqllllll
 ### 3.14. Enumerating Rows
 
 ``` sql
-sqllllll
+select
+    rowid,
+    species,
+    island
+from penguins
+limit 5;
 ```
 ![pic](images\3_14.png)
 
@@ -358,7 +546,25 @@ sqllllll
 ### 3.15. Conditionals
 
 ``` sql
-sqllllll
+with sized_penguins as (
+    select
+        species,
+        iif(
+            body_mass_g < 3500,
+            'small',
+            'large'
+        ) as size
+    from penguins
+    where body_mass_g is not null
+)
+
+select
+    species,
+    size,
+    count(*) as num
+from sized_penguins
+group by species, size
+order by species, num;
 ```
 ![pic](images\3_15.png)
 
@@ -366,7 +572,25 @@ sqllllll
 ### 3.16. Selecting a Case
 
 ``` sql
-sqllllll
+with sized_penguins as (
+    select
+        species,
+        case
+            when body_mass_g < 3500 then 'small'
+            when body_mass_g < 5000 then 'medium'
+            else 'large'
+        end as size
+    from penguins
+    where body_mass_g is not null
+)
+
+select
+    species,
+    size,
+    count(*) as num
+from sized_penguins
+group by species, size
+order by species, num;
 ```
 ![pic](images\3_16.png)
 
@@ -374,7 +598,24 @@ sqllllll
 ### 3.17. Checking a Range
 
 ``` sql
-sqllllll
+with sized_penguins as (
+    select
+        species,
+        case
+            when body_mass_g between 3500 and 5000 then 'normal'
+            else 'abnormal'
+        end as size
+    from penguins
+    where body_mass_g is not null
+)
+
+select
+    species,
+    size,
+    count(*) as num
+from sized_penguins
+group by species, size
+order by species, num;
 ```
 ![pic](images\3_17.png)
 
@@ -382,7 +623,11 @@ sqllllll
 ### 3.18. Pattern Matching
 
 ``` sql
-sqllllll
+select
+    species,
+    island
+from penguins
+where species like '%e%';
 ```
 ![pic](images\3_18.png)
 
@@ -390,21 +635,50 @@ sqllllll
 ### 3.19. Selecting First and Last Rows
 
 ``` sql
-sqllllll
+select * from (
+    select * from (select * from experiment order by started asc limit 5)
+    union all
+    select * from (select * from experiment order by started desc limit 5)
+)
+order by started asc;
 ```
 ![pic](images\3_19.png)
 
 
 ### 3.20. Intersection
 ``` sql
-sqllllll
+select
+    species,
+    island,
+    sex
+from penguins
+where island = 'Torgersen'
+intersect
+select
+    species,
+    island,
+    sex
+    from penguins
+where bill_length_mm < 50;
 ```
 ![pic](images\3_20.png)
 
 
 ### 3.21. Exclusion
 ``` sql
-sqllllll
+select
+    species,
+    island,
+    sex
+from penguins
+where island = 'Torgersen'
+except
+select
+    species,
+    island,
+    sex
+    from penguins
+where bill_length_mm < 30;
 ```
 ![pic](images\3_21.png)
 
@@ -412,7 +686,18 @@ sqllllll
 ### 3.22. Random Numbers and Why Not
 
 ``` sql
-sqllllll
+with decorated as (
+    select random() as rand,
+    personal || ' ' || family as name
+    from staff
+)
+
+select
+    rand,
+    abs(rand) % 10 as selector,
+    name
+from decorated
+where selector < 5;
 ```
 ![pic](images\3_22.png)
 
@@ -420,7 +705,17 @@ sqllllll
 ### 3.23. Creating an Index
 
 ``` sql
-sqllllll
+explain query plan
+select filename
+from plate
+where filename like '%07%';
+
+create index plate_file on plate(filename);
+
+explain query plan
+select filename
+from plate
+where filename like '%07%';
 ```
 ![pic](images\3_23.png)
 
@@ -428,7 +723,8 @@ sqllllll
 ### 3.24. Generating Sequences
 
 ``` sql
-sqllllll
+select value from generate_series(1, 5);
+
 ```
 ![pic](images\3_24.png)
 
@@ -436,7 +732,14 @@ sqllllll
 ### 3.25. Generating Sequences of Dates
 
 ``` sql
-sqllllll
+create table temp (
+    num integer not null
+);
+insert into temp values (1), (5);
+select value from generate_series (
+    (select min(num) from temp),
+    (select max(num) from temp)
+);
 ```
 ![pic](images\3_25.png)
 
@@ -444,7 +747,36 @@ sqllllll
 ### 3.26. Counting Experiments Started per Day Without Gaps
 
 ``` sql
-sqllllll
+with
+-- complete sequence of days with 0 as placeholder for number of experiments
+all_days as (
+    select
+        date((select julianday(min(started)) from experiment) + value) as some_day,
+        0 as zeroes
+    from (
+        select value from generate_series(
+            (select 0),
+            (select count(*) - 1 from experiment)
+        )
+    )
+),
+
+-- sequence of actual days with actual number of experiments started
+actual_days as (
+    select
+        started,
+        count(started) as num_exp
+    from experiment
+    group by started
+)
+
+-- combined by joining on day and taking actual number (if available) or zero
+select
+    all_days.some_day as day,
+    coalesce(actual_days.num_exp, all_days.zeroes) as num_exp
+from
+    all_days left join actual_days on all_days.some_day = actual_days.started
+limit 5;
 ```
 ![pic](images\3_26.png)
 
@@ -452,7 +784,18 @@ sqllllll
 ### 3.27. Self Join
 
 ``` sql
-sqllllll
+with person as (
+    select
+        ident,
+        personal || ' ' || family as name
+    from staff
+)
+
+select
+    left_person.name,
+    right_person.name
+from person as left_person inner join person as right_person
+limit 10;
 ```
 ![pic](images\3_27.png)
 
@@ -460,7 +803,19 @@ sqllllll
 ### 3.28. Generating Unique Pairs
 
 ``` sql
-sqllllll
+with person as (
+    select
+        ident,
+        personal || ' ' || family as name
+    from staff
+)
+
+select
+    left_person.name,
+    right_person.name
+from person as left_person inner join person as right_person
+on left_person.ident < right_person.ident
+where left_person.ident <= 4 and right_person.ident <= 4;
 ```
 ![pic](images\3_28.png)
 
@@ -468,7 +823,28 @@ sqllllll
 ### 3.29. Filtering Pairs
 
 ``` sql
-sqllllll
+with
+person as (
+    select
+        ident,
+        personal || ' ' || family as name
+    from staff
+),
+
+together as (
+    select
+        left_perf.staff as left_staff,
+        right_perf.staff as right_staff
+    from performed as left_perf inner join performed as right_perf
+        on left_perf.experiment = right_perf.experiment
+    where left_staff < right_staff
+)
+
+select
+    left_person.name as person_1,
+    right_person.name as person_2
+from person as left_person inner join person as right_person join together
+    on left_person.ident = left_staff and right_person.ident = right_staff;
 ```
 ![pic](images\3_29.png)
 
@@ -476,7 +852,17 @@ sqllllll
 ### 3.30. Existence and Correlated Subqueries
 
 ``` sql
-sqllllll
+select
+    name,
+    building
+from department
+where
+    exists (
+        select 1
+        from staff
+        where dept = department.ident
+    )
+order by name;
 ```
 ![pic](images\3_30.png)
 
@@ -484,7 +870,17 @@ sqllllll
 ### 3.31. Nonexistence
 
 ``` sql
-sqllllll
+select
+    name,
+    building
+from department
+where
+    not exists (
+        select 1
+        from staff
+        where dept = department.ident
+    )
+order by name;
 ```
 ![pic](images\3_31.png)
 
@@ -492,7 +888,12 @@ sqllllll
 ### 3.32. Avoiding Correlated Subqueries
 
 ``` sql
-sqllllll
+select distinct
+    department.name as name,
+    department.building as building
+from department inner join staff
+    on department.ident = staff.dept
+order by name;
 ```
 ![pic](images\3_32.png)
 
@@ -500,7 +901,21 @@ sqllllll
 ### 3.33. Lead and Lag
 
 ``` sql
-sqllllll
+with ym_num as (
+    select
+        strftime('%Y-%m', started) as ym,
+        count(*) as num
+    from experiment
+    group by ym
+)
+
+select
+    ym,
+    lag(num) over (order by ym) as prev_num,
+    num,
+    lead(num) over (order by ym) as next_num
+from ym_num
+order by ym;
 ```
 ![pic](images\3_33.png)
 
@@ -508,7 +923,22 @@ sqllllll
 ### 3.34. Windowing Functions
 
 ``` sql
-sqllllll
+with ym_num as (
+    select
+        strftime('%Y-%m', started) as ym,
+        count(*) as num
+    from experiment
+    group by ym
+)
+
+select
+    ym,
+    num,
+    sum(num) over (order by ym) as num_done,
+    (sum(num) over (order by ym) * 1.00) / (select sum(num) from ym_num) as completed_progress,
+    cume_dist() over (order by ym) as linear_progress
+from ym_num
+order by ym;
 ```
 ![pic](images\3_34.png)
 
@@ -516,7 +946,21 @@ sqllllll
 ### 3.35. Explaining Another Query Plan
 
 ``` sql
-sqllllll
+explain query plan
+with ym_num as (
+    select
+        strftime('%Y-%m', started) as ym,
+        count(*) as num
+    from experiment
+    group by ym
+)
+select
+    ym,
+    num,
+    sum(num) over (order by ym) as num_done,
+    cume_dist() over (order by ym) as progress
+from ym_num
+order by ym;
 ```
 ![pic](images\3_35.png)
 
@@ -524,7 +968,22 @@ sqllllll
 ### 3.36. Partitioned Windows
 
 ``` sql
-sqllllll
+with y_m_num as (
+    select
+        strftime('%Y', started) as year,
+        strftime('%m', started) as month,
+        count(*) as num
+    from experiment
+    group by year, month
+)
+
+select
+    year,
+    month,
+    num,
+    sum(num) over (partition by year order by month) as num_done
+from y_m_num
+order by year, month;
 ```
 ![pic](images\3_36.png)
 
