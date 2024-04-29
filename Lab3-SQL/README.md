@@ -1687,7 +1687,31 @@ with Session(engine) as session:
 
 ### 5.12. Relations with ORMs
 
-{{embed 'src/5_12.png' 'python'}}
+```python
+from typing import Optional
+from sqlmodel import Field, Session, SQLModel, create_engine, select
+
+
+class Staff(SQLModel, table=True):
+    ident: str = Field(default=None, primary_key=True)
+    personal: str
+    family: str
+    dept: Optional[str] = Field(default=None, foreign_key="department.ident")
+    age: int
+
+class Department(SQLModel, table=True):
+    ident: str = Field(default=None, primary_key=True)
+    name: str
+    building: str
+
+db_uri = "sqlite:///C:/Users/tomas/Desktop/szkola/ISI/Lab3-SQL/db/assays.db"
+engine = create_engine(db_uri)
+SQLModel.metadata.create_all(engine)
+with Session(engine) as session:
+    statement = select(Department, Staff).where(Staff.dept == Department.ident)
+    for dept, staff in session.exec(statement):
+        print(f"{dept.name}: {staff.personal} {staff.family}")
+```
 
 ![pic](images/5_12.png)
 
