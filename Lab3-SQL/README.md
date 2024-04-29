@@ -4,7 +4,7 @@
 ``` sql
 select * from penguins
 ```
-![pic](images\2_1.png)
+![pic](images/2_1.png)
 
 ### 2.2. Select columns
 ``` sql
@@ -14,7 +14,7 @@ select
     sex
 from little_penguins;
 ```
-![pic](images\2_2.png)
+![pic](images/2_2.png)
 
 ### 2.3. sorting
 ``` sql
@@ -25,7 +25,7 @@ select
 from little_penguins
 order by island asc, sex desc;
 ```
-![pic](images\2_3.png)
+![pic](images/2_3.png)
 
 ### 2.4. Limiting Output
 ``` sql
@@ -37,7 +37,7 @@ from penguins
 order by species, sex, island
 limit 10;
 ```
-![pic](images\2_4.png)
+![pic](images/2_4.png)
 
 ### 2.5. Paging Output
 ``` sql
@@ -49,7 +49,7 @@ from penguins
 order by species, sex, island
 limit 10 offset 3;
 ```
-![pic](images\2_5.png)
+![pic](images/2_5.png)
 
 ### 2.6. Removing Duplicates
 ``` sql
@@ -59,7 +59,7 @@ select distinct
     island
 from penguins;
 ```
-![pic](images\2_6.png)
+![pic](images/2_6.png)
 
 ### 2.7. Filtering Results
 ``` sql
@@ -70,7 +70,7 @@ select distinct
 from penguins
 where island = 'Biscoe';
 ```
-![pic](images\2_7.png)
+![pic](images/2_7.png)
 
 ### 2.8. Doing Calculations
 ``` sql
@@ -80,7 +80,7 @@ select
 from penguins
 limit 3;
 ```
-![pic](images\2_8.png)
+![pic](images/2_8.png)
 
 ### 2.9. Renaming Columns
 ``` sql
@@ -91,7 +91,7 @@ select
 from penguins
 limit 3;
 ```
-![pic](images\2_9.png)
+![pic](images/2_9.png)
 
 ### 2.10. Calculating with Missing Values
 ``` sql
@@ -102,7 +102,7 @@ select
 from penguins
 limit 5;
 ```
-![pic](images\2_10.png)
+![pic](images/2_10.png)
 
 ### 2.11. Null Equality
 ``` sql
@@ -113,7 +113,7 @@ select distinct
 from penguins
 where island = 'Biscoe';
 ```
-![pic](images\2_11.png)
+![pic](images/2_11.png)
 
 ### 2.12. Null Inequality
 ``` sql
@@ -124,14 +124,14 @@ select distinct
 from penguins
 where island = 'Biscoe' and sex != 'FEMALE';
 ```
-![pic](images\2_12.png)
+![pic](images/2_12.png)
 
 ### 2.13. Ternary Logic
 ``` sql
 select null = null;
 
 ```
-![pic](images\2_13.png)
+![pic](images/2_13.png)
 
 
 ### 2.14. Handling Null Safely
@@ -143,7 +143,7 @@ select
 from penguins
 where sex is null;
 ```
-![pic](images\2_14.png)
+![pic](images/2_14.png)
 
 
 ### 2.15. Aggregating
@@ -151,7 +151,7 @@ where sex is null;
 select sum(body_mass_g) as total_mass
 from penguins;
 ```
-![pic](images\2_16.png)
+![pic](images/2_16.png)
 
 
 ### 2.16. Common Aggregation Functions
@@ -163,7 +163,7 @@ select
     avg(bill_length_mm) / avg(bill_depth_mm) as weird_ratio
 from penguins;
 ```
-![pic](images\2_17.png)
+![pic](images/2_17.png)
 
 
 ### 2.17. Counting
@@ -174,7 +174,7 @@ select
     count(distinct sex) as count_distinct
 from penguins;
 ```
-![pic](images\2_18.png)
+![pic](images/2_18.png)
 
 
 ### 2.18. Grouping
@@ -184,7 +184,7 @@ select avg(body_mass_g) as average_mass_g
 from penguins
 group by sex;
 ```
-![pic](images\2_19.png)
+![pic](images/2_19.png)
 
 
 ### 2.19. Behavior of Unaggregated Columns
@@ -196,7 +196,7 @@ select
 from penguins
 group by sex;
 ```
-![pic](images\2_20.png)
+![pic](images/2_20.png)
 
 
 ### 2.20. Arbitrary Choice in Aggregation
@@ -208,7 +208,7 @@ select
 from penguins
 group by sex;
 ```
-![pic](images\2_21.png)
+![pic](images/2_21.png)
 
 ### 2.21. Filtering Aggregated Values
 
@@ -220,7 +220,7 @@ from penguins
 group by sex
 having average_mass_g > 4000.0;
 ```
-![pic](images\2_22.png)
+![pic](images/2_22.png)
 ### 2.22. Readable Output
 
 ``` sql
@@ -231,7 +231,7 @@ from penguins
 group by sex
 having average_mass_g > 4000.0;
 ```
-![pic](images\2_23.png)
+![pic](images/2_23.png)
 ### 2.23. Filtering Aggregate Inputs
 
 ``` sql
@@ -244,20 +244,20 @@ select
 from penguins
 group by sex;
 ```
-![pic](images\2_24.png)
+![pic](images/2_24.png)
 ### 2.24. Creating In-memory Database, Python scripts
 
 ``` sql
 CHECK THE LAST SECTION FOR PYTHON
 ```
-![pic](images\2_25.png)
+![pic](images/2_25.png)
 ### 2.25. Combining Information
 
 ``` sql
 select *
 from penguins cross join little_penguins;
 ```
-![pic](images\2_26.png)
+![pic](images/2_26.png)
 ### 2.26. Inner Join
 
 ``` sql
@@ -265,7 +265,7 @@ select *
 from penguins inner join little_penguins
     on penguins.species = little_penguins.species;
 ```
-![pic](images\2_27.png)
+![pic](images/2_27.png)
 ### 2.27. Aggregating Joined Data
 
 ``` sql
@@ -276,7 +276,7 @@ from penguins inner join little_penguins
     on penguins.species = little_penguins.species
 group by penguins.species;
 ```
-![pic](images\2_28.png)
+![pic](images/2_28.png)
 ### 2.28. Left Join
 
 ``` sql
@@ -284,7 +284,7 @@ select *
 from penguins left join little_penguins
     on penguins.species = little_penguins.species;
 ```
-![pic](images\2_29.png)
+![pic](images/2_29.png)
 ### 2.29. Coalescing Values
 
 ``` sql
@@ -295,7 +295,7 @@ from penguins left join little_penguins
     on penguins.species = little_penguins.species
 group by penguins.species;
 ```
-![pic](images\2_29.png)
+![pic](images/2_29.png)
 ### 2.30. Full Outer Join
 
 ``` sql
@@ -310,7 +310,7 @@ create table weight (
 
 select * from size outer join weight;
 ```
-![pic](images\2_30.png)
+![pic](images/2_30.png)
 
 
 ### 3.1. Negating Incorrectly
@@ -320,7 +320,7 @@ select distinct island
 from penguins
 where species != 'Gentoo';
 ```
-![pic](images\3_1.png)
+![pic](images/3_1.png)
 
 
 ### 3.2. Set Membership
@@ -330,7 +330,7 @@ select *
 from penguins
 where species not in ('Gentoo', 'Adelie');
 ```
-![pic](images\3_2.png)
+![pic](images/3_2.png)
 
 
 ### 3.3. Subqueries
@@ -343,7 +343,7 @@ where island not in (
     where species = 'Gentoo'
 );
 ```
-![pic](images\3_3.png)
+![pic](images/3_3.png)
 
 
 ### 3.4. Defining a Primary Key
@@ -366,7 +366,7 @@ select * from lab_equipment;
 insert into lab_equipment values
 (1.5, 'green', 2);
 ```
-![pic](images\3_4.png)
+![pic](images/3_4.png)
 
 
 ### 3.5. Autoincrementing and Primary Keys
@@ -383,7 +383,7 @@ insert into person values
 select * from person;
 insert into person values (1, 'prevented');
 ```
-![pic](images\3_5.png)
+![pic](images/3_5.png)
 
 
 ### 3.6. Internal Tables
@@ -392,7 +392,7 @@ insert into person values (1, 'prevented');
 select * from sqlite_sequence;
 
 ```
-![pic](images\3_6.png)
+![pic](images/3_6.png)
 
 
 ### 3.7. Altering Tables
@@ -411,7 +411,7 @@ where species = 'Adelie';
 
 select * from little_penguins;
 ```
-![pic](images\3_7.png)
+![pic](images/3_7.png)
 
 
 ### 3.8. Creating New Tables from Old
@@ -433,7 +433,7 @@ from
     inner join little_penguins on little_penguins.species = penguins.species;
 select * from new_work;
 ```
-![pic](images\3_8.png)
+![pic](images/3_8.png)
 
 
 ### 3.9. Removing Tables
@@ -456,7 +456,7 @@ CREATE TABLE IF NOT EXISTS "work" (
     foreign key(job_id) references job(ident)
 );
 ```
-![pic](images\3_9.png)
+![pic](images/3_9.png)
 
 
 ### 3.10. Comparing Individual Values to Aggregates
@@ -471,7 +471,7 @@ where
     )
 limit 5;
 ```
-![pic](images\3_10.png)
+![pic](images/3_10.png)
 
 
 ### 3.11. Comparing Individual Values to Aggregates Within Groups
@@ -492,7 +492,7 @@ from penguins inner join (
 where penguins.body_mass_g > averaged.avg_mass_g
 limit 5;
 ```
-![pic](images\3_11.png)
+![pic](images/3_11.png)
 
 
 ### 3.12. Common Table Expressions
@@ -514,7 +514,7 @@ from penguins inner join grouped
 where penguins.body_mass_g > grouped.avg_mass_g
 limit 5;
 ```
-![pic](images\3_12.png)
+![pic](images/3_12.png)
 
 
 ### 3.13. Explaining Query Plans
@@ -527,7 +527,7 @@ select
 from penguins
 group by species;
 ```
-![pic](images\3_13.png)
+![pic](images/3_13.png)
 
 
 ### 3.14. Enumerating Rows
@@ -540,7 +540,7 @@ select
 from penguins
 limit 5;
 ```
-![pic](images\3_14.png)
+![pic](images/3_14.png)
 
 
 ### 3.15. Conditionals
@@ -566,7 +566,7 @@ from sized_penguins
 group by species, size
 order by species, num;
 ```
-![pic](images\3_15.png)
+![pic](images/3_15.png)
 
 
 ### 3.16. Selecting a Case
@@ -592,7 +592,7 @@ from sized_penguins
 group by species, size
 order by species, num;
 ```
-![pic](images\3_16.png)
+![pic](images/3_16.png)
 
 
 ### 3.17. Checking a Range
@@ -617,7 +617,7 @@ from sized_penguins
 group by species, size
 order by species, num;
 ```
-![pic](images\3_17.png)
+![pic](images/3_17.png)
 
 
 ### 3.18. Pattern Matching
@@ -629,7 +629,7 @@ select
 from penguins
 where species like '%e%';
 ```
-![pic](images\3_18.png)
+![pic](images/3_18.png)
 
 
 ### 3.19. Selecting First and Last Rows
@@ -642,7 +642,7 @@ select * from (
 )
 order by started asc;
 ```
-![pic](images\3_19.png)
+![pic](images/3_19.png)
 
 
 ### 3.20. Intersection
@@ -661,7 +661,7 @@ select
     from penguins
 where bill_length_mm < 50;
 ```
-![pic](images\3_20.png)
+![pic](images/3_20.png)
 
 
 ### 3.21. Exclusion
@@ -680,7 +680,7 @@ select
     from penguins
 where bill_length_mm < 30;
 ```
-![pic](images\3_21.png)
+![pic](images/3_21.png)
 
 
 ### 3.22. Random Numbers and Why Not
@@ -699,7 +699,7 @@ select
 from decorated
 where selector < 5;
 ```
-![pic](images\3_22.png)
+![pic](images/3_22.png)
 
 
 ### 3.23. Creating an Index
@@ -717,7 +717,7 @@ select filename
 from plate
 where filename like '%07%';
 ```
-![pic](images\3_23.png)
+![pic](images/3_23.png)
 
 
 ### 3.24. Generating Sequences
@@ -726,7 +726,7 @@ where filename like '%07%';
 select value from generate_series(1, 5);
 
 ```
-![pic](images\3_24.png)
+![pic](images/3_24.png)
 
 
 ### 3.25. Generating Sequences of Dates
@@ -741,7 +741,7 @@ select value from generate_series (
     (select max(num) from temp)
 );
 ```
-![pic](images\3_25.png)
+![pic](images/3_25.png)
 
 
 ### 3.26. Counting Experiments Started per Day Without Gaps
@@ -778,7 +778,7 @@ from
     all_days left join actual_days on all_days.some_day = actual_days.started
 limit 5;
 ```
-![pic](images\3_26.png)
+![pic](images/3_26.png)
 
 
 ### 3.27. Self Join
@@ -797,7 +797,7 @@ select
 from person as left_person inner join person as right_person
 limit 10;
 ```
-![pic](images\3_27.png)
+![pic](images/3_27.png)
 
 
 ### 3.28. Generating Unique Pairs
@@ -817,7 +817,7 @@ from person as left_person inner join person as right_person
 on left_person.ident < right_person.ident
 where left_person.ident <= 4 and right_person.ident <= 4;
 ```
-![pic](images\3_28.png)
+![pic](images/3_28.png)
 
 
 ### 3.29. Filtering Pairs
@@ -846,7 +846,7 @@ select
 from person as left_person inner join person as right_person join together
     on left_person.ident = left_staff and right_person.ident = right_staff;
 ```
-![pic](images\3_29.png)
+![pic](images/3_29.png)
 
 
 ### 3.30. Existence and Correlated Subqueries
@@ -864,7 +864,7 @@ where
     )
 order by name;
 ```
-![pic](images\3_30.png)
+![pic](images/3_30.png)
 
 
 ### 3.31. Nonexistence
@@ -882,7 +882,7 @@ where
     )
 order by name;
 ```
-![pic](images\3_31.png)
+![pic](images/3_31.png)
 
 
 ### 3.32. Avoiding Correlated Subqueries
@@ -895,7 +895,7 @@ from department inner join staff
     on department.ident = staff.dept
 order by name;
 ```
-![pic](images\3_32.png)
+![pic](images/3_32.png)
 
 
 ### 3.33. Lead and Lag
@@ -917,7 +917,7 @@ select
 from ym_num
 order by ym;
 ```
-![pic](images\3_33.png)
+![pic](images/3_33.png)
 
 
 ### 3.34. Windowing Functions
@@ -940,7 +940,7 @@ select
 from ym_num
 order by ym;
 ```
-![pic](images\3_34.png)
+![pic](images/3_34.png)
 
 
 ### 3.35. Explaining Another Query Plan
@@ -962,7 +962,7 @@ select
 from ym_num
 order by ym;
 ```
-![pic](images\3_35.png)
+![pic](images/3_35.png)
 
 
 ### 3.36. Partitioned Windows
@@ -985,7 +985,7 @@ select
 from y_m_num
 order by year, month;
 ```
-![pic](images\3_36.png)
+![pic](images/3_36.png)
 
 
 ### 4.1. Blobs
@@ -1007,7 +1007,7 @@ select
     length(content)
 from images;
 ```
-![pic](images\4_1.png)
+![pic](images/4_1.png)
 
 
 ### 4.2. Yet Another Database
@@ -1015,7 +1015,7 @@ from images;
 ``` sql
 .schema
 ```
-![pic](images\4_2.png)
+![pic](images/4_2.png)
 
 
 ### 4.3. Storing JSON
@@ -1024,7 +1024,7 @@ from images;
 select * from machine;
 
 ```
-![pic](images\4_3.png)
+![pic](images/4_3.png)
 
 
 ### 4.4. Select Fields from JSON
@@ -1035,7 +1035,7 @@ select
     details->>'$.acquired' as double_arrow
 from machine;
 ```
-![pic](images\4_4.png)
+![pic](images/4_4.png)
 
 
 ### 4.5. JSON Array Access
@@ -1047,7 +1047,7 @@ select
     log->'$[0]' as first
 from usage;
 ```
-![pic](images\4_5.png)
+![pic](images/4_5.png)
 
 
 ### 4.6. Unpacking JSON Arrays
@@ -1060,7 +1060,7 @@ select
 from usage, json_each(usage.log)
 limit 10;
 ```
-![pic](images\4_6.png)
+![pic](images/4_6.png)
 
 
 ### 4.7. Selecting the Last Element of an Array
@@ -1072,7 +1072,7 @@ select
 from usage
 limit 5;
 ```
-![pic](images\4_7.png)
+![pic](images/4_7.png)
 
 
 ### 4.8. Modifying JSON
@@ -1084,7 +1084,7 @@ select
     json_set(details, '$.sold', json_quote('2024-01-25')) as updated
 from machine;
 ```
-![pic](images\4_8.png)
+![pic](images/4_8.png)
 
 
 ### 4.9. Refreshing the Penguins Database
@@ -1096,7 +1096,7 @@ select
 from penguins
 group by species;
 ```
-![pic](images\4_9.png)
+![pic](images/4_9.png)
 
 
 ### 4.10. Tombstones
@@ -1116,7 +1116,7 @@ from penguins
 where active
 group by species;
 ```
-![pic](images\4_10.png)
+![pic](images/4_10.png)
 
 ### 4.11. Importing CSV Data
 
@@ -1132,7 +1132,7 @@ update penguins set flipper_length_mm = null where flipper_length_mm = '';
 update penguins set body_mass_g = null where body_mass_g = '';
 update penguins set sex = null where sex = '';
 ```
-![pic](images\4_11.png)
+![pic](images/4_11.png)
 
 
 ### 4.12. Views
@@ -1165,7 +1165,7 @@ select
 from active_penguins
 group by species;
 ```
-![pic](images\4_12.png)
+![pic](images/4_12.png)
 
 
 ### 4.13. Hours Reminder
@@ -1180,7 +1180,7 @@ insert into job values
 ('clean', 0.5);
 select * from job;
 ```
-![pic](images\4_13.png)
+![pic](images/4_13.png)
 
 
 ### 4.14. Adding Checks
@@ -1196,7 +1196,7 @@ insert into job values ('calibrate', 1.5);
 insert into job values ('reset', -0.5);
 select * from job;
 ```
-![pic](images\4_14.png)
+![pic](images/4_14.png)
 
 
 ### 4.15. Transactions
@@ -1217,7 +1217,7 @@ rollback;
 
 select * from job;
 ```
-![pic](images\4_15.png)
+![pic](images/4_15.png)
 
 
 ### 4.16. Rollback in Constraints
@@ -1238,7 +1238,7 @@ insert into job values
 
 select * from job;
 ```
-![pic](images\4_16.png)
+![pic](images/4_16.png)
 
 
 ### 4.17. Rollback in Statements
@@ -1259,7 +1259,7 @@ insert or rollback into job values
 
 select * from job;
 ```
-![pic](images\4_17.png)
+![pic](images/4_17.png)
 
 
 ### 4.18. Upsert
@@ -1284,10 +1284,10 @@ select * from jobs_done;
 insert into jobs_done values
 ('zia', 1)
 on conflict(person) do update set num = num + 1;
-.print '\nafter upsert'
+.print '/nafter upsert'
 select * from jobs_done;
 ```
-![pic](images\4_18.png)
+![pic](images/4_18.png)
 
 
 ### 4.19. Creating Triggers
@@ -1325,7 +1325,7 @@ begin
     where total.person = new.person;
 end;
 ```
-![pic](images\4_19.png)
+![pic](images/4_19.png)
 
 
 ### 4.20. Trigger Not Firing
@@ -1336,7 +1336,7 @@ insert into job values
 ('august', 0.5),
 ('gene', 1.0);
 ```
-![pic](images\4_20.png)
+![pic](images/4_20.png)
 
 
 ### 4.21. Trigger Firing
@@ -1346,7 +1346,7 @@ insert into job values
 ('gene', 1.0),
 ('august', -1.0);
 ```
-![pic](images\4_21.png)
+![pic](images/4_21.png)
 
 
 ### 4.22. Representing Graphs
@@ -1368,7 +1368,7 @@ insert into lineage values
 ```sql
 select * from lineage;
 ```
-![pic](images\4_22.png)
+![pic](images/4_22.png)
 
 
 ### 4.23. Recursive Queries
@@ -1391,7 +1391,7 @@ select
     generations
 from descendent;
 ```
-![pic](images\4_23.png)
+![pic](images/4_23.png)
 
 
 ### 4.24. Bidirectional Contacts
@@ -1409,7 +1409,7 @@ select
     select right, left from contact
 ;
 ```
-![pic](images\4_24.png)
+![pic](images/4_24.png)
 
 
 ### 4.25. Updating Group Identifiers
@@ -1425,7 +1425,7 @@ from
     (person as left join bi_contact on left.name = bi_contact.left)
     join person as right on bi_contact.right = right.name;
 ```
-![pic](images\4_25.png)
+![pic](images/4_25.png)
 
 
 ### 4.26. Recursive Labeling
@@ -1451,7 +1451,7 @@ from labeled
 group by name
 order by label, name;
 ```
-![pic](images\4_26.png)
+![pic](images/4_26.png)
 
 
 ### 5.1. Querying from Python
@@ -1459,7 +1459,7 @@ order by label, name;
 ``` python
 pythonnnn
 ```
-![pic](images\5_1.png)
+![pic](images/5_1.png)
 
 
 ### 5.2. Incremental Fetch
@@ -1467,7 +1467,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_2.png)
+![pic](images/5_2.png)
 
 
 ### 5.3. Insert, Delete, and All That
@@ -1475,7 +1475,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_3.png)
+![pic](images/5_3.png)
 
 
 ### 5.4. Interpolating Values
@@ -1483,7 +1483,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_4.png)
+![pic](images/5_4.png)
 
 
 ### 5.5. Script Execution
@@ -1491,7 +1491,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_5.png)
+![pic](images/5_5.png)
 
 
 ### 5.6. SQLite Exceptions in Python
@@ -1499,7 +1499,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_6.png)
+![pic](images/5_6.png)
 
 
 ### 5.7. Python in SQLite
@@ -1507,7 +1507,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_7.png)
+![pic](images/5_7.png)
 
 
 ### 5.8. Handling Dates and Times
@@ -1515,7 +1515,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_8.png)
+![pic](images/5_8.png)
 
 
 ### 5.9. Pandas and SQL
@@ -1523,7 +1523,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_9.png)
+![pic](images/5_9.png)
 
 
 ### 5.10. Polars and SQL
@@ -1531,7 +1531,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_10.png)
+![pic](images/5_10.png)
 
 
 ### 5.11. Object-Relational Mappers
@@ -1539,7 +1539,7 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_11.png)
+![pic](images/5_11.png)
 
 
 ### 5.12. Relations with ORMs
@@ -1547,6 +1547,6 @@ pythonnnn
 ``` python
 pythonnnn
 ```
-![pic](images\5_12.png)
+![pic](images/5_12.png)
 
 ### THATS ALL FOLKS

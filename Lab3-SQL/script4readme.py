@@ -10,7 +10,7 @@ def generate_readme_from_template():
 
     for num_of_tasks in tasks:
         for i in range(1, num_of_tasks+1):
-            data = data.replace(f"{section}_0", f"{section}_{i}", 1)
+            data = data.replace(f"images\\{section}_0", f"images/{section}_{i}", 1)
         section+=1
 
     with open("README.md", 'w') as f:
@@ -33,7 +33,7 @@ def rename_images():
 
     for num_of_tasks in tasks:
         for i in range(1, num_of_tasks+1):
-            os.rename(files[file_idx], f'images\\{section}_{i}.png')
+            os.rename(files[file_idx], f'images/{section}_{i}.png')
             file_idx+=1
         section+=1
 
