@@ -1544,9 +1544,8 @@ pythonnnn
 
 ### 5.12. Relations with ORMs
 
-``` python
-pythonnnn
-```
+{{embed 'src/5_12.png' 'python'}}
+
 ![pic](images/5_12.png)
 
 ### THATS ALL FOLKS
