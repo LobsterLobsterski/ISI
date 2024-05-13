@@ -1,0 +1,42 @@
+version: "3"
+services:
+    baza: 
+        image: postgres
+        volumes:
+            - dane_bazy:/var/lib/postgresql/data
+        environment:
+            POSTGRES_USER:   ja
+            POSTGRES_db: mojabaza
+            POSTGRES_PASSWORD:  mojehaslo
+        networks:
+            -myNetworks
+    
+    my_app:
+        build: ./django_app
+        image: django_img
+        ports:
+            - 8080:8080
+        depends_on:
+            - baza
+        networks:
+            - myNetwork
+            - app-net
+    
+    gateway:
+        image: nginx
+        volumes:
+            - ./nginx.conf:/etc/nginx/nginx.conf:ro
+        depends_on:
+            - my_app
+        networks:
+            - app-net
+        ports:
+            - 8080:8080
+
+networks:
+    myNetwork:
+    app-net:
+
+valumes:
+    dane_bazy:
+                     
